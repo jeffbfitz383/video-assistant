@@ -8,7 +8,7 @@ from faker import Faker
 
 # Local imports
 from app import app
-from models import db, User, Project, Play
+from models import db, User, Project, Play, Player, Game
 
 if __name__ == '__main__':
     fake = Faker()
@@ -19,6 +19,8 @@ if __name__ == '__main__':
         Project.query.delete()
         Play.query.delete()
         Player.query.delete()
+        Game.query.delete()
+
 
         taki = User(name="Taki", password="woof")
         jeff = User(name="Jeff", password="chakra")
@@ -51,11 +53,30 @@ if __name__ == '__main__':
         playerB =Player()
         playerB =Player()
 
+        GameA =Game(name="Boulder", level="V", date="Dec-7")
+        Game2 =Game(name="Monarch",level="V", date="Jan=6")
+        Game3 =Game(name="Fairview",level="V", date="Feb-5")
+        Game4 =Game(name="Legacy", level="V", date="Mar-4")
+        Game5 =Game(name="Boulder", level="JV", date="Dec-7")
+        Game6 =Game(name="Monarch",level="JV", date="Jan=6")
+        Game7 =Game(name="Fairview",level="JV", date="Feb-5")
+      
+        Game8 =Game(name ="Legacy", level="JV", date="Mar-4")
+        Game9 =Game(name="Boulder", level="C", date="Dec-7")
+        Game10 =Game(name="Monarch",level="C", date="Jan=6")
+        Game11 =Game(name="Fairview",level="C", date="Feb-5")
+        Game12 =Game(name ="Legacy",level="C", date="Mar-4")
+        Game13 =Game(name="Boulder",level="F", date="Dec-7")
+        Game14 =Game(name="Monarch",level="F", date="Jan=6")
+        Game15 =Game(name="Fairview",level="F", date="Feb-5")
+        Game16 =Game(name ="Legacy",level="F", date="Mar-4")
+
+
 
         db.session.add(taki)
         db.session.add(jeff)
         db.session.add(norm)
-
+ 
         db.session.add(play)
 
         db.session.add(Horizon2023) 
@@ -70,8 +91,27 @@ if __name__ == '__main__':
         db.session.add(play7)
         db.session.add(play8)
         db.session.add(play9)
+
+    
         
 
+
+        db.session.add(GameA)
+        db.session.add(Game2)
+        db.session.add(Game3)
+        db.session.add(Game4)
+        db.session.add(Game5)
+        db.session.add(Game6)
+        db.session.add(Game7)
+        db.session.add(Game8)
+        db.session.add(Game9)
+        db.session.add(Game10)
+        db.session.add(Game11)
+        db.session.add(Game12)
+        db.session.add(Game13)
+        db.session.add(Game14)
+        db.session.add(Game15)
+        db.session.add(Game16)
 
         db.session.commit()
         print("Starting seed...")
