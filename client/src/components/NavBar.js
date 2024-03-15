@@ -6,6 +6,8 @@ function NavBar(){
         <nav>
         <Link to="/">  Home    </Link>
         <Link to="/signup">  Signup    </Link>
+        <Link to="/Login">  Login    </Link>
+        <Link to="/Addplay">  Addplay    </Link>
         
             
         </nav>

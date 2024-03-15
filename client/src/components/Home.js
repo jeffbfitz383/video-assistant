@@ -5,7 +5,9 @@ function Home() {
     return (
         <div>
             <h1>Highlight Video Maker!</h1>
-            <h1>a second tag</h1>
+            <button>create account</button><p></p>
+            <button>login</button>
+            
           
 
         </div>
