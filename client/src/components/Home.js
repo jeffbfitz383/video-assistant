@@ -1,12 +1,17 @@
 import React from 'react';
-import {Link, useParams} from "react-router-dom";
+import {Link, useParams, useHistory} from "react-router-dom";
 
 function Home() {
+
+    const history = useHistory();
+
+    const handleNavtoSignup = () => {
+        history.push('/signup'); // Navigate to "/signup" when button is clicked
+    };
+
     return (
         <div>
-            <h1>Highlight Video Maker!</h1>
-            <button>create account</button><p></p>
-            <button>login</button>
+            <button onClick={handleNavtoSignup}>Signup</button>
             
           
 

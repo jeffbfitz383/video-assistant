@@ -5,6 +5,7 @@ import Home from './Home'
 import Signup from './Signup'
 import Login from './Login'
 import Addplay from './Addplay'
+import Addproject from "./Addproject";
 
 function App() {
   //return <h1>Highlight Video Assistant</h1>;
@@ -25,6 +26,9 @@ function App() {
             </Route>
             <Route exact path="/Addplay">
               <Addplay/>
+            </Route>
+            <Route exact path="/Addproject">
+              <Addproject/>
             </Route>
 
           </Switch>
