@@ -9,6 +9,9 @@ function NavBar(){
         <Link to="/Login">  Login    </Link>
         <Link to="/Addplay">  Addplay    </Link>
         <Link to="/Addproject">  Addproject    </Link>
+        <Link to="/UserLoggedin">  UserLoggedin    </Link>
+        <Link to="/Enterproject">  Enterproject   </Link>
+        <Link to="/Useplay">  Useplay   </Link>
         
             
         </nav>
