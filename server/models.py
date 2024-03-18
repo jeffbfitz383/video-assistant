@@ -30,7 +30,7 @@ class Project(db.Model):
     name = db.Column(db.String, nullable=False)
 
     users = db.relationship("User", back_populates="projects")
-    plays = db.relationship("Play", back_populates="prjects")
+    plays = db.relationship("Play", back_populates="projects")
 
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -50,10 +50,10 @@ class Play(db.Model):
     assist = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.String)
 
-    project = db.relationship("Project", back_populates="plays")
+    projects = db.relationship("Project", back_populates="plays")
 
-    players = db.relationship("Player", secondary=PlayPlayer, back_populates="plays")
-    games = db.relationship("Game", secondary=PlayGame , back_populates="plays")
+    players = db.relationship("Player", secondary=PlayPlayer.__table__, back_populates="plays")
+    games = db.relationship("Game", secondary=PlayGame.__table__ , back_populates="plays")
 
     project_id = db.Column(db.Integer, db.ForeignKey('projects.id'))
 
@@ -65,7 +65,7 @@ class Player(db.Model):
     jersey = db.Column(db.Integer, nullable=False)
     year = db.Column(db.String, nullable=False)
 
-    plays = db.relationship("Play", secondary=PlayPlayer, back_populates="players")
+    plays = db.relationship("Play", secondary=PlayPlayer.__table__, back_populates="players")
     play_id = db.Column(db.Integer, db.ForeignKey('plays.id'))
 
 
@@ -77,7 +77,7 @@ class Game(db.Model):
     level = db.Column(db.String, nullable=False)
     date = db.Column(db.String, nullable=False)
 
-    plays = db.relationship("Play", secondary=PlayGame, back_populates="games")
+    plays = db.relationship("Play", secondary=PlayGame.__table__, back_populates="games")
     play_id = db.Column(db.Integer, db.ForeignKey('plays.id'))
 
 
