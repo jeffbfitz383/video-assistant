@@ -8,10 +8,15 @@ function Login() {
         history.push('/UserLoggedin'); // Navigate to "/signup" when button is clicked
     };
 
+    const handleNavToHome = () => {
+        history.push('/'); // Navigate to "/signup" when button is clicked
+    };
+
     return (
         <div>
             <h1>Login Page</h1>
             <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleNavToHome}>Go Back</button>
           
 
         </div>

@@ -7,8 +7,10 @@ from flask import request
 from flask_restful import Resource
 
 # Local imports
-#from config import app, db, api
-# Add your model imports
+# from config import app, db, api
+from config import *
+from models import db, PlayPlayer, PlayGame, User, Project, Play, Player, Game
+
 
 
 # Views go here!
@@ -16,6 +18,18 @@ from flask_restful import Resource
 @app.route('/')
 def index():
     return '<h1>Project Server</h1>'
+
+class SignUp(Resource):
+    def post(self):
+        form_json = request.get_json()
+        new_user = User(
+            name = form_json["name"],
+            password = form_json["password"]
+        )
+        db.session.add(new_user)
+        db.session.commit()
+
+api.add_resource(SignUp, '/Signup')
 
 
 if __name__ == '__main__':

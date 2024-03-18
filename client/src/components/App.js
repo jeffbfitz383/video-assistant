@@ -21,25 +21,25 @@ function App() {
             <Route exact path="/">
               <Home/>
             </Route>
-            <Route exact path="/Signup">
+            <Route exact path="/signup">
               <Signup/>
             </Route>
-            <Route exact path="/Login">
+            <Route exact path="/login">
               <Login/>
             </Route>
-            <Route exact path="/Addplay">
+            <Route exact path="/addplay">
               <Addplay/>
             </Route>
-            <Route exact path="/Addproject">
+            <Route exact path="/addproject">
               <Addproject/>
             </Route>
-            <Route exact path="/UserLoggedin">
+            <Route exact path="/userLoggedin">
               <UserLoggedin/>
             </Route>
-            <Route exact path="/Enterproject">
+            <Route exact path="/enterproject">
               <Enterproject/>
             </Route>
-            <Route exact path="/Useplay">
+            <Route exact path="/useplay">
               <Useplay/>
             </Route>
 
