@@ -3,6 +3,11 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 
 from config import *
+from flask_bcrypt import Bcrypt
+from sqlalchemy.ext.hybrid import hybrid_property
+
+
+bcrypt = Bcrypt()
 
 class PlayPlayer(db.Model):
     __tablename__="play_player_table"
@@ -16,15 +21,33 @@ class PlayGame(db.Model):
     play_id = db.Column(db.Integer, db.ForeignKey('plays.id'), primary_key=True)
     game_id = db.Column(db.Integer, db.ForeignKey('games.id'), primary_key=True)
 
-class User(db.Model):
+class User(db.Model, SerializerMixin):
     __tablename__= "users"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    password = db.Column(db.String, nullable=False)
+   
 
     projects = db.relationship("Project", back_populates="users")
+    _password_hash = db.Column(db.String, nullable=False)
+    serialize_rules = ("-projects.users",)
 
-class Project(db.Model):
+
+
+
+    @hybrid_property
+    def password_hash(self):
+        return self._password_hash
+
+    @password_hash.setter
+    def password(self, password):
+        password_hash = bcrypt.generate_password_hash(password.encode("utf-8"))
+        self._password_hash = password_hash.decode("utf-8")
+
+    def authenticate(self, password):
+        return bcrypt.check_password_hash(self.password_hash, password.encode("utf-8"))
+
+
+class Project(db.Model, SerializerMixin):
     __tablename__= "projects"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
@@ -33,9 +56,12 @@ class Project(db.Model):
     plays = db.relationship("Play", back_populates="projects")
 
 
+
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-class Play(db.Model):
+    serialize_rules = ("-users.projects", "-plays.projects")
+
+class Play(db.Model, SerializerMixin):
     __tablename__= "plays"
     id = db.Column(db.Integer, primary_key=True)
     level = db.Column(db.String, nullable=False)
@@ -57,7 +83,9 @@ class Play(db.Model):
 
     project_id = db.Column(db.Integer, db.ForeignKey('projects.id'))
 
-class Player(db.Model):
+    serialize_rules = ("-players.plays", "-projects.plays", "-games.plays")
+
+class Player(db.Model, SerializerMixin):
     __tablename__="players"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
@@ -68,9 +96,11 @@ class Player(db.Model):
     plays = db.relationship("Play", secondary=PlayPlayer.__table__, back_populates="players")
     play_id = db.Column(db.Integer, db.ForeignKey('plays.id'))
 
+    serialize_rules = ("-plays.player",)
 
 
-class Game(db.Model):
+
+class Game(db.Model, SerializerMixin):
     __tablename__="games"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
@@ -80,6 +110,7 @@ class Game(db.Model):
     plays = db.relationship("Play", secondary=PlayGame.__table__, back_populates="games")
     play_id = db.Column(db.Integer, db.ForeignKey('plays.id'))
 
+    serialize_rules = ("-plays.game",)
 
 
     

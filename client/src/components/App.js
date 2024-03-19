@@ -11,7 +11,20 @@ import Enterproject from "./Enterproject"
 import Useplay from "./Useplay"
 
 function App() {
-  //return <h1>Highlight Video Assistant</h1>;
+  const [user, setUser] = useState(null);
+  
+
+  useEffect(() => {
+
+    fetch("/check_session").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  if (!user) return <Login onLogin={setUser} />;
+
     return(
       
       <BrowserRouter>
@@ -21,11 +34,11 @@ function App() {
             <Route exact path="/">
               <Home/>
             </Route>
-            <Route exact path="/signup">
+            <Route exact path="/Signup">
               <Signup/>
             </Route>
             <Route exact path="/login">
-              <Login/>
+              <Login onLogin={setUser}/>
             </Route>
             <Route exact path="/addplay">
               <Addplay/>

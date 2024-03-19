@@ -8,7 +8,7 @@ function UserLoggedin() {
 
     const history = useHistory();
 
-    const handleNavtoHome = () => {
+    const handleLogout = () => {
         history.push('/'); 
 
     };
@@ -27,7 +27,7 @@ function UserLoggedin() {
         <div>
             <h1>User Page</h1>
             <p>Would you like to create a project or enter a project?</p>
-            <button onClick={handleNavtoHome}>Home</button>
+            <button onClick={handleLogout}>Logout</button>
             <button onClick={handleNavNewProject}>Create New Project</button>
             <button onClick={handleNavtoEnterProject}>Enter an exisiting Project</button>
             {/* You can add more HTML elements here */}

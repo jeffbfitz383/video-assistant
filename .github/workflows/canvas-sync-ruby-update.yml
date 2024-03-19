@@ -20,7 +20,7 @@ jobs:
         with:
           ruby-version: 2.7
 
-      - name: Install github-to-canvas
+      - name: Install github-to-canvascd
         run: gem install github-to-canvas
 
       # Secret stored in learn-co-curriculum Settings/Secrets

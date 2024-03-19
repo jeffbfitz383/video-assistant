@@ -4,14 +4,14 @@
 from random import randint, choice as rc
 
 # Remote library imports
-from faker import Faker
+#from faker import Faker
 
 # Local imports
 from app import app
 from models import db, User, Project, Play, Player, Game
 
 if __name__ == '__main__':
-    fake = Faker()
+
 
 
     with app.app_context():
@@ -29,7 +29,7 @@ if __name__ == '__main__':
         Horizon2023 = Project(name="Horizon2023")
         Legacy2023 = Project(name="Legacy2023")
 
-        play = Play(level="V", quarter=1, clock_start = "7:55", clock_stop = "7:50", start = 55, stop = 60, player = 12, description = "layup", quality = 10.0, assist = 11,  comment = "Use if nothing better" )
+        play = Play(level="V", quarter=1, clock_start = "7:55", clock_stop = "7:50""Dec-7", start = 55, stop = 60, player = 12, description = "layup", quality = 10.0, assist = 11,  comment = "Use if nothing better" )
         play1 = Play(level="JV", quarter=2, clock_start = "7:50", clock_stop = "7:45", start = 60, stop = 65, player = 11, description = "2ff", quality = 8.1, assist = 10,  comment = "Use this one" )
         play2 = Play(level="C", quarter=3, clock_start = "7:45", clock_stop = "7:40", start = 65, stop = 70, player = 10, description = "ff", quality = 6.4, assist = 5,  comment = "Use if nothing better" )
         play3 = Play(level="V", quarter=4, clock_start = "7:40", clock_stop = "7:35", start = 70, stop = 75, player = 5, description = "block", quality = 4.9, assist = 4,  comment = "Use if nothing better" )
@@ -65,7 +65,7 @@ if __name__ == '__main__':
         playerW=Player(name = "PlayerW", level = "F", jersey = "34", year = "F" )
         playerX=Player(name = "PlayerX", level = "F", jersey = "35", year = "F" )
 
-        GameA =Game(name="Boulder", level="V", date="Dec-7")
+        GameA =Game(name="Boulder", level="V", date="dec-7")
         Game2 =Game(name="Monarch",level="V", date="Jan=6")
         Game3 =Game(name="Fairview",level="V", date="Feb-5")
         Game4 =Game(name="Legacy", level="V", date="Mar-4")
