@@ -194,7 +194,38 @@ api.add_resource(DeletePlay, "/deleteplay/<int:id>")
 
 
 
+class UpdatePlay(Resource):
+    def patch(self, play_id):
+        existing_play = Play.query.filter_by(id=play_id).first()
+        print(existing_play)
+        if not existing_play:
+            return jsonify({"message": "Play not found"}), 404
 
+        
+        form_json = request.get_json()
+
+  
+        # existing_play.level = form_json["level", existing_play.level]
+        # existing_play.quarter = form_json["quarter", existing_play.quarter]
+        # existing_play.clock_start = form_json["clock_start", existing_play.clock_start]
+        # existing_play.clock_stop = form_json["clock_stop", existing_play.clock_stop]
+        # existing_play.start = form_json["clock_start", existing_play.start]
+        # existing_play.stop = form_json["clock_stop", existing_play.stop]
+        # existing_play.player = form_json["player", existing_play.player]
+        # existing_play.description = form_json["description", existing_play.description]
+        # existing_play.quality = form_json["quality", existing_play.quality]
+        # existing_play.assist = form_json["assist", existing_play.assist]
+        # existing_play.comment = form_json["comment", existing_play.comment]
+        for key in form_json:
+            setattr(existing_play, key, form_json[key])
+
+        db.session.add(existing_play)
+        db.session.commit()
+
+        return existing_play.to_dict(), 200
+
+
+api.add_resource(UpdatePlay, '/updateplay/<int:play_id>')
 
 
 if __name__ == '__main__':
