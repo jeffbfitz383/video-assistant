@@ -179,6 +179,18 @@ class GetPlay(Resource):
 
 api.add_resource(GetPlay, '/Useplay')
 
+class DeletePlay(Resource):
+    def delete(self, id): 
+        play = Play.query.filter_by(id=id).first()
+        if play:
+            db.session.delete(play)
+            db.session.commit()
+            return {"message": "Play deleted."}, 200 
+        else:
+            return {"message": "Play not found."}, 404
+
+api.add_resource(DeletePlay, "/deleteplay/<int:id>") 
+
 
 
 

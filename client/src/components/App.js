@@ -10,6 +10,7 @@ import UserLoggedin from "./UserLoggedin";
 import Enterproject from "./Enterproject"
 import Useplay from "./Useplay"
 import { useHistory } from "react-router-dom";
+import DeletePlay from "./Deleteplay";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -67,6 +68,9 @@ function App() {
             </Route>
             <Route exact path="/useplay">
               <Useplay/>
+            </Route>
+            <Route exact path="/deleteplay">
+              <DeletePlay/>
             </Route>
 
           </Switch>
