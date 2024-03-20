@@ -9,10 +9,12 @@ import Addproject from "./Addproject";
 import UserLoggedin from "./UserLoggedin";
 import Enterproject from "./Enterproject"
 import Useplay from "./Useplay"
+import { useHistory } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState(null);
-  
+  const history = useHistory();
+  const [showSignup, setShowSignup] = useState(false)
 
   useEffect(() => {
 
@@ -23,7 +25,15 @@ function App() {
     });
   }, []);
 
-  if (!user) return <Login onLogin={setUser} />;
+  if (!user) return (
+  <>
+  {
+    showSignup ? <Signup /> : <Login onLogin={setUser}/>
+
+  }
+  <button onClick={()=> setShowSignup(!showSignup)}>{showSignup ? "Login" : "Signup"}</button>
+  </>
+  )
 
     return(
       
@@ -35,7 +45,10 @@ function App() {
               <Home/>
             </Route>
             <Route exact path="/Signup">
-              <Signup/>
+              {
+                showSignup ?
+              <Signup/> : <Login/>
+              }
             </Route>
             <Route exact path="/login">
               <Login onLogin={setUser}/>
@@ -47,7 +60,7 @@ function App() {
               <Addproject/>
             </Route>
             <Route exact path="/userLoggedin">
-              <UserLoggedin/>
+              <UserLoggedin setUser={setUser}/>
             </Route>
             <Route exact path="/enterproject">
               <Enterproject/>

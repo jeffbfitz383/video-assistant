@@ -4,12 +4,30 @@ import {Link, useParams, useHistory} from "react-router-dom"
 
 
 
-function UserLoggedin() {
+function UserLoggedin({setUser}) {
 
     const history = useHistory();
 
-    const handleLogout = () => {
-        history.push('/'); 
+    const handleLogout = (e) => {
+        e.preventDefault();
+        // setIsLoading(true);
+        fetch("/UserLoggedin", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          
+        }).then(() => {
+        //   setIsLoading(false);
+            setUser(null)
+          
+            history.push('/');
+        });
+      
+
+    const handleNavToHome = () => {
+        history.push('/'); // Navigate to the home page
+    };
 
     };
 

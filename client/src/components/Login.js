@@ -23,6 +23,7 @@ function Login({onLogin}) {
             r.json().then((user) => onLogin(user));
           } 
           history.push('/UserLoggedin');
+          alert(`Logged in`);
         });
       }
 
