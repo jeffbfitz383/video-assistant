@@ -11,11 +11,13 @@ import Enterproject from "./Enterproject"
 import Useplay from "./Useplay"
 import { useHistory } from "react-router-dom";
 import DeletePlay from "./Deleteplay";
+import UpdatePlay from "./UpdatePlay"
 
 function App() {
   const [user, setUser] = useState(null);
   const history = useHistory();
   const [showSignup, setShowSignup] = useState(false)
+  
 
   useEffect(() => {
 
@@ -71,6 +73,9 @@ function App() {
             </Route>
             <Route exact path="/deleteplay">
               <DeletePlay/>
+            </Route>
+            <Route exact path="/updateplay">
+              <UpdatePlay/>
             </Route>
 
           </Switch>

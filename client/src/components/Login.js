@@ -22,7 +22,7 @@ function Login({onLogin}) {
           if (r.ok) {
             r.json().then((user) => onLogin(user));
           } 
-          history.push('/UserLoggedin');
+          history.push('/UsePlay');
           alert(`Logged in`);
         });
       }

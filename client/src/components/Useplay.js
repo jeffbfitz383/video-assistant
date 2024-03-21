@@ -19,6 +19,12 @@ function Useplay() {
     history.push('/deleteplay');
      };
 
+    const navToPatch = () => {
+    //    
+    alert('button works')
+    history.push('/updateplay');
+        };
+
     function playNumber(id) {
         alert(`Clicked on play with ID: ${id}`);
     }
@@ -28,7 +34,7 @@ function Useplay() {
             <h1>Plays</h1>
             <p>Welcome to our project management system!</p>
             <button onClick = {navToDelete}>Go to Delete Play</button><p></p>
-            <button onClick = {navToDelete}>Go to Update Play</button>
+            <button onClick = {navToPatch}>Go to Update Play</button>
             <ul>
                 {plays.map((play, index) => (
                     <li key={index}>

@@ -7,13 +7,13 @@ function DeletePlay() {
     const [name, setId] = useState("")
 
     useEffect(() => {
-        // Fetch play data (replace with your actual API call)
+ 
         fetch('/Useplay')
             .then(response => response.json())
             .then(data => setPlays(data.plays))
             .catch(error => console.error('Error fetching play data:', error));
     }, []);
-// istory.push('/deleteplay'); // Navigate to the home pageh
+
      const navToUsePlay = () => {
     //    
     alert('button works')
@@ -21,15 +21,14 @@ function DeletePlay() {
      };
 
     function handleSubmit(id) {
-                // Assuming you have an API call to delete the play
-        // Replace with your actual API endpoint
+
         fetch(`/deleteplay/${name}`, {
             method: 'DELETE',
         })
             .then(response => {
                 if (response.ok) {
                     console.log('Play deleted successfully');
-                    // Redirect to a confirmation page or another route
+                   
                     history.push('/confirmation');
                 } else {
                     console.error('Error deleting play');
@@ -47,8 +46,8 @@ function DeletePlay() {
             <ul>
                 {plays.map((play, index) => (
                     <li key={index}>
-                        {/* <button onClick={playNumber(play.id)}>use</button> */}
-                        ID: {play.id}  ,   {/* Display play ID */}
+                      
+                        ID: {play.id}  ,   
                         Level: {play.level}  , 
                         Quarter: {play.quarter} , 
                         Clock_Start: {play.clock_start}  ,
