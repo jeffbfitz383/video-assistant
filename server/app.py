@@ -149,7 +149,10 @@ class CreatePlay(Resource):
        
         db.session.add(new_play)
         db.session.commit()
-        a = hello()
+
+        play_id = new_play.id
+
+        a = hello(play_id, play_start, play_stop)
         print(a)
 
 api.add_resource(CreatePlay, '/Addplay')

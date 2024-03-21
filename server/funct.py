@@ -1,9 +1,8 @@
 from moviepy.editor import VideoFileClip, concatenate_videoclips
 
-def hello():
+def hello(id, start, stop):
 
-    start = 17
-    stop = 21
+
 
     name =("../client/public/project.mp4")
 
@@ -15,7 +14,7 @@ def hello():
 
     total = concatenate_videoclips([clip1])
     total.write_videofile(name)
-    x= 4
+    x= (f"{id},{start},{stop}")
 
     return x
 
