@@ -128,6 +128,7 @@ class CreatePlay(Resource):
         play_quality = form_json["quality"]
         play_assist = form_json["assist"]
         play_comment = form_json['comment']
+        play_used = form_json['used']
         
 
         new_play = Play(
@@ -141,7 +142,8 @@ class CreatePlay(Resource):
             description =play_description,
             quality = play_quality,
             assist=play_assist,
-            comment=play_comment
+            comment=play_comment,
+            used = play_used
              )
        
         db.session.add(new_play)
@@ -169,7 +171,8 @@ class GetPlay(Resource):
                 'description': play.description,
                 'quality': play.quality,
                 'assist': play.assist,
-                'comment': play.comment
+                'comment': play.comment,
+                'used': play.used
             }
             plays_data.append(play_dict)
 

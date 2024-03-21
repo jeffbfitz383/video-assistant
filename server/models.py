@@ -75,6 +75,7 @@ class Play(db.Model, SerializerMixin):
     quality = db.Column(db.Float)
     assist = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.String)
+    used = db.Column(db.Integer)
 
     projects = db.relationship("Project", back_populates="plays")
 

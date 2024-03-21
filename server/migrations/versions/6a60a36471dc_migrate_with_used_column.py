@@ -1,8 +1,8 @@
-"""remigrating with password hash
+"""migrate with used column
 
-Revision ID: 80e62d66ad5e
+Revision ID: 6a60a36471dc
 Revises: 
-Create Date: 2024-03-19 09:53:24.784976
+Create Date: 2024-03-21 09:36:52.196726
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '80e62d66ad5e'
+revision = '6a60a36471dc'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -44,6 +44,7 @@ def upgrade():
     sa.Column('quality', sa.Float(), nullable=True),
     sa.Column('assist', sa.Integer(), nullable=False),
     sa.Column('comment', sa.String(), nullable=True),
+    sa.Column('used', sa.Integer(), nullable=True),
     sa.Column('project_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['project_id'], ['projects.id'], name=op.f('fk_plays_project_id_projects')),
     sa.PrimaryKeyConstraint('id')
