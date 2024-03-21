@@ -4,9 +4,9 @@ def hello(id, start, stop):
 
 
 
-    name =("../client/public/project.mp4")
+    name =(f"../client/public/clip{id}.mp4")
 
-    clip1 = VideoFileClip("../client/public/video.mp4").subclip(3,7)
+    clip1 = VideoFileClip("../client/public/video.mp4").subclip(start,stop)
     #clip2 = VideoFileClip("video.mp4").subclip(10,13)
     #clip3 = VideoFileClip("video.mp4").subclip(start,stop)
 
