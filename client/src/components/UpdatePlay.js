@@ -19,6 +19,7 @@ function UpdatePlay() {
     const [quality, setQuality] = useState('');
     const [assist, setAssist] = useState('');
     const [comment, setComment] = useState('');
+    const [used, setUsed]= useState('');
 
     useEffect(() => {
     
@@ -51,7 +52,8 @@ function UpdatePlay() {
             description: description,
             quality: quality,
             assist: assist,
-            comment:comment
+            comment:comment,
+            used:used
            
         };
         console.log(updatedPlay)
@@ -106,6 +108,8 @@ function UpdatePlay() {
                         Quality: {play.quality}  ,
                         Play:{play.assist} ,
                         Comment:{play.comment} ,
+                        Used Status:{play.used}
+
                     </li>
                 ))}
             </ul>
@@ -117,11 +121,12 @@ function UpdatePlay() {
             <input type='text'name='clock_stop'placeholder='time of the stop of the play'value={clock_stop}onChange={(e) => setClock_stop(e.target.value)}/><p></p>
             <input type='text'name='start'placeholder='video start time'value={start}onChange={(e) => setStart(e.target.value)}/><p></p>
             <input type='text'name='end'placeholder='video stop time'value={end}onChange={(e) => setEnd(e.target.value)}/><p></p>
-            <input type='text'name='player'placeholder='Enter Level of player'value={player}onChange={(e) => setPlayer(e.target.value)}/><p></p>
-            <input type='text'name='description'placeholder='Enter Level of player'value={description}onChange={(e) => setDescription(e.target.value)}/><p></p>
-            <input type='text'name='quality'placeholder='Enter Level of player'value={quality}onChange={(e) => setQuality(e.target.value)}/><p></p>
-            <input type='text'name='assist'placeholder='Enter Level of player'value={assist}onChange={(e) => setAssist(e.target.value)}/><p></p>
-            <input type='text'name='comment'placeholder='Enter Level of player'value={comment}onChange={(e) => setComment(e.target.value)}/><p></p>
+            <input type='text'name='player'placeholder='player'value={player}onChange={(e) => setPlayer(e.target.value)}/><p></p>
+            <input type='text'name='description'placeholder='description'value={description}onChange={(e) => setDescription(e.target.value)}/><p></p>
+            <input type='text'name='quality'placeholder='quality'value={quality}onChange={(e) => setQuality(e.target.value)}/><p></p>
+            <input type='text'name='assist'placeholder='assist'value={assist}onChange={(e) => setAssist(e.target.value)}/><p></p>
+            <input type='text'name='comment'placeholder='comment'value={comment}onChange={(e) => setComment(e.target.value)}/><p></p>
+            <input type='text'name='used'placeholder='used'value={used}onChange={(e) => setUsed(e.target.value)}/><p></p>
             <button type='submit'>Submit</button>
             </form>
         </div>
