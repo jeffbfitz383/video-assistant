@@ -9,6 +9,7 @@ function Useplay() {
     const [usage, setUsage] = useState([]);
     const history = useHistory();
     const [clipURL, setClipURL] = useState('');
+    const [playStatus, setPlayStatus] = useState('unused'); 
     var CU = 'cu';
 
     useEffect(() => {
@@ -18,7 +19,12 @@ function Useplay() {
             .then(data => setPlays(data.plays))
             .catch(error => console.error('Error fetching play data:', error));
     }, []);
-// istory.push('/deleteplay'); // Navigate to the home pageh
+
+    function handleUseStatus(event) {
+        setPlayStatus(event.target.value);
+        alert(playStatus)
+      }
+
      const navToDelete = () => {
     //    
     alert('button works')
@@ -76,14 +82,7 @@ function Useplay() {
             console.error('Error updating play:', error);
             alert('Failed to update play.');
         });
-        /// This function needs to
-        /// fetch the '/updateplay/<int:play_id>' route from app.py
-        /// pass the value obtained in this line of code 
 
-        /// <input type='text'name='usage'placeholde<<r='Enter id#'value={usage}onChange={(e) => setUsage(e.target.value)}/><p></p>
-        /// as the <int:play_id>
-        /// patch only the play.used field updating it to the value 1
-        /// leave all other values in play the same
 
     }                       
 
@@ -96,9 +95,36 @@ function Useplay() {
             <h1>Plays</h1>
             <p>Welcome to our project management system!</p>
             <button onClick = {navToDelete}>Go to Delete Play</button><p></p>
-            <button onClick = {navToPatch}>Go to Update Play</button>
+            <button onClick = {navToPatch}>Go to Update Play</button><p></p>
+            
+            
+            <div>
+                <input
+                    type="radio"
+                    id="used"
+                    name="playStatus"
+                    value="used"
+                    checked={playStatus === 'used'}
+                    onChange={handleUseStatus}
+                />
+                <label htmlFor="used">Used</label>
+
+                <input
+                    type="radio"
+                    id="unused"
+                    name="playStatus"
+                    value="unused"
+                    checked={playStatus === 'unused'}
+                    onChange={handleUseStatus}
+                />
+                <label htmlFor="unused">Unused</label>
+            </div>
+        
+            
+
             <ul>
-                {plays.map((play, index) => (
+            {plays.filter(play => playStatus === 'used' ? play.used === 1 : play.used === 0)
+            .map((play, index) => (
                     <li key={index}>
                         <button onClick={playNumber}>use</button>
                         ID: {play.id}  ,   {/* Display play ID */}
