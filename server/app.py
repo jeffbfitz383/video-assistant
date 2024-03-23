@@ -11,7 +11,7 @@ from werkzeug.security import check_password_hash
 # from config import app, db, api
 from config import *
 from models import db, PlayPlayer, PlayGame, User, Project, Play, Player, Game
-from funct import hello
+from funct import hello, playused
 
 
 
@@ -232,6 +232,7 @@ class UpdatePlay(Resource):
         db.session.commit()
 
         return existing_play.to_dict(), 200
+        print(playused())
 
 
 api.add_resource(UpdatePlay, '/updateplay/<int:play_id>')

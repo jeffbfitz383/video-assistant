@@ -48,9 +48,8 @@ function Useplay() {
         alert(newclipURL); // prints clip17.mp4 as expected
         setClipURL(newclipURL);
         // The state `clipURL` won't be updated immediately here
-        // Use `newclipURL` directly instead of `clipURL`
         CU = newclipURL;
-        alert(CU); // This will now alert the correct URL
+        alert(CU); 
     }
 
     function handleUse(event){
@@ -154,6 +153,8 @@ function Useplay() {
         <h3>View a play</h3>
         <input type='text'name='selection'placeholder='Enter id#'value={selection}onChange={(e) => setSelection(e.target.value)}/><p></p>
         <button type = 'submit'>submit</button>
+        <button type='submit' onClick={() => setSelection(0)}>see running project</button>
+        {/* this second button, when clicked should set {selection} to zero */}
       </form>
 
       <form onSubmit = {handleUse}>
