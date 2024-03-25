@@ -1,6 +1,7 @@
 
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.orm import validates
 
 from config import *
 from flask_bcrypt import Bcrypt
@@ -85,6 +86,18 @@ class Play(db.Model, SerializerMixin):
     project_id = db.Column(db.Integer, db.ForeignKey('projects.id'))
 
     serialize_rules = ("-players.plays", "-projects.plays", "-games.plays")
+
+    @validates('level')
+    def validate_level(self, key, level):
+        if level not in ["V", "JV", "C", "F"]:
+            raise ValueError(f"Invalid level: {level}. Level must be 'V', 'JV', 'C', or 'F'.")
+        return level
+
+    # @validates('quarter')
+    # def validate_quarter(self, key, quarter):
+    #     if quarter not in [1, 2, 3, 4, 5]:
+    #         raise ValueError(f"Invalid quarter: {quarter}. Quarter must be '1', '2', '3', '4' or '5'.")
+    #     return quarter
 
 class Player(db.Model, SerializerMixin):
     __tablename__="players"

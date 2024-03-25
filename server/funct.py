@@ -8,6 +8,7 @@ def hello(id, start, stop):
 
 
     name =(f"../client/public/clip{id}.mp4")
+    print(name)
 
     clip1 = VideoFileClip("../client/public/video.mp4").subclip(start,stop)
     #clip2 = VideoFileClip("video.mp4").subclip(10,13)
@@ -15,11 +16,11 @@ def hello(id, start, stop):
 
 
 
-    total = concatenate_videoclips([clip1])
-    total.write_videofile(name)
-    x= (f"{id},{start},{stop}")
+    #total = concatenate_videoclips([clip1])
+    clip1.write_videofile(name)
+    #x= (f"{id},{start},{stop}")
 
-    return x
+    #return x
 
 
 # def playused(play):
@@ -30,8 +31,8 @@ def hello(id, start, stop):
 #     total = concatenate_videoclips([running_project,clip_to_be_added])
 #     total.write_videofile("../client/public/clip0.mp4")
 
-    
-#     return x
+    x = name
+    return x
 
 
     #######
