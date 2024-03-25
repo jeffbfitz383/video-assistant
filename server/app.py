@@ -232,10 +232,20 @@ class UpdatePlay(Resource):
         db.session.commit()
 
         return existing_play.to_dict(), 200
-        print(playused())
+       
 
 
 api.add_resource(UpdatePlay, '/updateplay/<int:play_id>')
+
+
+class UsePlay(Resource):
+    def get(self, play_id):
+        print(play_id)
+        print(playused(play_id))
+        return {'play_id': play_id}
+        
+
+api.add_resource(UsePlay, '/useplay/<int:play_id>')
 
 
 if __name__ == '__main__':

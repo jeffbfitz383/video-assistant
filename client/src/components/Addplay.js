@@ -38,7 +38,7 @@ const Video = () => {
         quality: quality,
         assist: assist,
         comment:comment,
-        used: used
+        used: 0
 
     }
     fetch("http://127.0.0.1:5555/Addplay", {
@@ -82,7 +82,7 @@ const Video = () => {
         <input type='text'name='quality'placeholder='Enter the quality rating'value={quality}onChange={(e) => setQuality(e.target.value)}/><p></p>
         <input type='text'name='assist'placeholder='Jersey # of assisting player' value={assist}onChange={(e) => setAssist(e.target.value)}/><p></p>
         <input type='text'name='comment'placeholder='comment optional'value={comment}onChange={(e) => setComment(e.target.value)}/><p></p>
-        <input type='text'name='used'placeholder='used status'value={used}onChange={(e) => setUsed(e.target.value)}/><p></p>
+       
         <button type='submit'>Submit</button>
       </form>
     </div>

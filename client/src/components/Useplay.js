@@ -37,6 +37,11 @@ function Useplay() {
     history.push('/updateplay');
         };
 
+
+    function navToAddPlay()  {
+        history.push('/Addplay');
+    };
+
     function playNumber(id) {
         alert(`Clicked on play with ID: ${id}`);
     }
@@ -71,10 +76,11 @@ function Useplay() {
             // Handle the response data
             console.log('Play updated:', data);
             alert('Play updated successfully!');
-            fetch('/Useplay')
+            fetch(`/Useplay`)
             .then(response => response.json())
             .then(data => setPlays(data.plays))
             .catch(error => console.error('Error fetching play data:', error));
+            fetch(`/useplay/${playID}`)
         })
         .catch(error => {
             // Handle any errors
@@ -93,6 +99,7 @@ function Useplay() {
         <div>
             <h1>Plays</h1>
             <p>Welcome to our project management system!</p>
+            <button onClick = {navToAddPlay}>Create Another Play</button><p></p>
             <button onClick = {navToDelete}>Go to Delete Play</button><p></p>
             <button onClick = {navToPatch}>Go to Update Play</button><p></p>
             
