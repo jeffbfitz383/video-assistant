@@ -128,11 +128,11 @@ function Useplay() {
         
             
 
-            <ul>
+            <ul class = "box">
             {plays.filter(play => playStatus === 'used' ? play.used === 1 : play.used === 0)
             .map((play, index) => (
                     <li key={index}>
-                        <button onClick={playNumber}>use</button>
+                        {/* <button onClick={playNumber}>use</button> */}
                         ID: {play.id}  ,   {/* Display play ID */}
                         Level: {play.level}  , 
                         Quarter: {play.quarter} , 

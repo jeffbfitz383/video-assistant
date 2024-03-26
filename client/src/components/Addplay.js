@@ -43,7 +43,7 @@ const Video = () => {
         end: end,
         player: player,
         description: description,
-        quality: quality,
+        quality: parseFloat(quality),
         assist: assist,
         comment:comment,
         used: 0
@@ -109,9 +109,9 @@ const Video = () => {
         <input type='text'name='clock_stop'placeholder='time of the stop of the play'value={clock_stop}onChange={(e) => setClock_stop(e.target.value)}/><p></p>
         <input type='text'name='start'placeholder='video start time'value={start}onChange={(e) => setStart(e.target.value)}/><p></p>
         <input type='text'name='end'placeholder='video stop time'value={end}onChange={(e) => setEnd(e.target.value)}/><p></p>
-        <input type='text'name='player'placeholder='Enter Level of player'value={player}onChange={(e) => setPlayer(e.target.value)}/><p></p>
+        <input type='text'name='player'placeholder='Enter player jersey#'value={player}onChange={(e) => setPlayer(e.target.value)}/><p></p>
         <input type='text'name='description'placeholder='Enter description of play'value={description}onChange={(e) => setDescription(e.target.value)}/><p></p>
-        <input type='text'name='quality'placeholder='Enter the quality rating'value={quality}onChange={(e) => setQuality(e.target.value)}/><p></p>
+        <input type='text' name='quality'placeholder='Enter the quality rating'value={quality}onChange={(e) => setQuality(e.target.value)}/><p></p>
         <input type='text'name='assist'placeholder='Jersey # of assisting player' value={assist}onChange={(e) => setAssist(e.target.value)}/><p></p>
         <input type='text'name='comment'placeholder='comment optional'value={comment}onChange={(e) => setComment(e.target.value)}/><p></p>
        

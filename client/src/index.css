@@ -50,3 +50,23 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.box {
+  background-color: rgba(0, 0, 136, 0.4); /* Dark blue background with 50% opacity */
+  padding: 20px; /* Padding inside the box */
+  border: 2px solid yellow; /* Yellow border, 2 pixels thick */
+  color: yellow; /* Yellow text color */
+  border-radius: 20px; /* Rounded corners with 20px radius */
+}
+
+body {
+  background-color: #000000; 
+  color:yellow;
+  background-image: url('https://media.discordapp.net/attachments/1213227999705694289/1220803474837602306/silzen.png?ex=661044d5&is=65fdcfd5&hm=a105e7909e81515c1e5ada0ae1c5687b97735519a6bd7a6a71d6a6713ccd51d5&=&format=webp&quality=lossless&width=534&height=534'); /* Background image */
+  background-size: cover; /* Cover the entire box area */
+
+}
+ 
+.bk{
+
+}

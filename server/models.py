@@ -48,6 +48,13 @@ class User(db.Model, SerializerMixin):
         return bcrypt.check_password_hash(self.password_hash, password.encode("utf-8"))
 
 
+    @validates('name')
+    def validate_name(self, key, name):
+        if not isinstance(name, str) or not 1<= len(name):
+            raise ValueError(f"Invalid name: {name}. name must be a string of at least 4 characters.")
+        return name
+
+
 class Project(db.Model, SerializerMixin):
     __tablename__= "projects"
     id = db.Column(db.Integer, primary_key=True)
@@ -93,11 +100,60 @@ class Play(db.Model, SerializerMixin):
             raise ValueError(f"Invalid level: {level}. Level must be 'V', 'JV', 'C', or 'F'.")
         return level
 
-    # @validates('quarter')
-    # def validate_quarter(self, key, quarter):
-    #     if quarter not in [1, 2, 3, 4, 5]:
-    #         raise ValueError(f"Invalid quarter: {quarter}. Quarter must be '1', '2', '3', '4' or '5'.")
-    #     return quarter
+    @validates('quarter')
+    def validate_quarter(self, key, quarter):
+        if quarter not in [1, 2, 3, 4, 5]:
+            raise ValueError(f"Invalid quarter: {quarter}. Quarter must be '1', '2', '3', '4' or '5'.")
+        return quarter
+
+    @validates('clock_start')
+    def validate_clock_start(self, key, clock_start):
+        if not isinstance(clock_start, str):
+            raise ValueError(f"Invalid clock_start: {clock_start}. clock_start must be a string of at least 4 characters.")
+        return clock_start
+
+    @validates('clock_stop')
+    def validate_clock_stop(self, key, clock_stop):
+        if not isinstance(clock_stop, str):
+            raise ValueError(f"Invalid clock_stop: {clock_stop}. clock_stop must be a string of at least 4 characters.")
+        return clock_stop
+
+    
+    @validates('start')
+    def validate_start(self, key, start):
+        if not isinstance(start, str):
+            raise ValueError(f"Invalid start: {start}. start must be an integer")
+        return start
+
+    @validates('stop')
+    def validate_stop(self, key, stop):
+        if not isinstance(stop, str):
+            raise ValueError(f"Invalid stop: {stop}. start must be an integer")
+        return stop
+
+    @validates('player')
+    def validate_player(self, key, player):
+        if player not in ["0", "1", "2", "3", "4", "5", "10", "11", "12", "13", "14", "1", "20", "21", "22", "23", "24", "25", "30", "31", "32", "33", "34", "35"]:
+            raise ValueError(f"Invalid player: {player}. Jersey #s must be between 0 and 35 and not contain any digits higher than 5.")
+        return player
+
+
+    @validates('description')
+    def validate_description(self, key, description):
+        if description not in["3 point","Layup","Field Goal","Put Back","Shot","Rebound","Block","Swat","Steal","FF","2FF","Charge","Tip Off","Rebound","Other"]:
+            raise ValueError(f"Invalid play description: {description}. Please select on of the items in the drop down")
+        return description
+
+    @validates('quality')
+    def validate_quality(self, key, quality): 
+        if not isinstance(quality, float) or not 0.0 <= quality <= 10.0:
+            raise ValueError(f"Invalid quality: {quality}. quality must be an float between 0 and 10.0")
+        return quality
+
+
+
+    ##### no validation for comment.  Can be anything or can be left blank.
+    #### no validati for used.  Autosets to 0 during play substatiation.
 
 class Player(db.Model, SerializerMixin):
     __tablename__="players"
