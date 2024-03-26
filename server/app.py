@@ -129,26 +129,31 @@ class CreatePlay(Resource):
         play_assist = form_json["assist"]
         play_comment = form_json['comment']
         play_used = form_json['used']
+
+        player2 = Player.query.filter_by(jersey=play_player).first()
         
 
-        new_play = Play(
-            level = play_level,
-            quarter = play_quarter,
-            clock_start = play_clock_start,
-            clock_stop = play_clock_stop,
-            start = play_start,
-            stop = play_stop,
-            player  =play_player,
-            description =play_description,
-            quality = play_quality,
-            assist=play_assist,
+  
+        if player:
+            new_play = Play(
+                level = play_level,
+                quarter = play_quarter,
+                clock_start = play_clock_start,
+                clock_stop = play_clock_stop,
+                start = play_start,
+                stop = play_stop,
+                player  =play_player,
+                description =play_description,
+                quality = play_quality,
+                assist=play_assist,
 
-            comment=play_comment,
-            used = play_used
-             )
-       
-        db.session.add(new_play)
-        db.session.commit()
+                comment=play_comment,
+                used = play_used,
+                
+                )
+        
+            db.session.add(new_play)
+            db.session.commit()
 
         play_id = new_play.id
 
@@ -248,6 +253,14 @@ class UsePlay(Resource):
 api.add_resource(UsePlay, '/useplay/<int:play_id>')
 
 
+
+
+
+
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
+
+
+
 

@@ -144,11 +144,21 @@ class Play(db.Model, SerializerMixin):
             raise ValueError(f"Invalid play description: {description}. Please select on of the items in the drop down")
         return description
 
+    # @validates('quality')
+    # def validate_quality(self, key, quality): 
+    #     if not isinstance(quality, float) or not 0.0 <= quality <= 10.0:
+    #         raise ValueError(f"Invalid quality: {quality}. quality must be an float between 0 and 10.0")
+    #     return quality
+
     @validates('quality')
-    def validate_quality(self, key, quality): 
-        if not isinstance(quality, float) or not 0.0 <= quality <= 10.0:
-            raise ValueError(f"Invalid quality: {quality}. quality must be an float between 0 and 10.0")
-        return quality
+    def validate_quality(self, key, quality):
+        try:
+            quality_float = float(quality)  # Convert to float
+            if not 0.0 <= quality_float <= 10.0:
+                raise ValueError(f"Invalid quality: {quality}. Quality must be a float between 0 and 10.0")
+            return quality_float
+        except ValueError:
+            raise ValueError(f"Invalid quality: {quality}. Quality must be a valid float.")
 
 
 

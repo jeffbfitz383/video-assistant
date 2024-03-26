@@ -96,7 +96,7 @@ function Useplay() {
 
 
     return (
-        <div>
+        <div class = "bk">
             <h1>Plays</h1>
             <p>Welcome to our project management system!</p>
             <button onClick = {navToAddPlay}>Create Another Play</button><p></p>

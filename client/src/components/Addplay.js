@@ -30,10 +30,21 @@ const Video = () => {
     setQuarter(value);
   }
 
+  function getPlayerIdFromJerseyNumber(player){
+    alert(`The jersey# is ${player}`)
+  }
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Form submitted');
+    // alert('Form submitted');
+    if (!level || !quarter) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+
+
     const newPlay = {
         level: level,
         quarter: quarter,
@@ -48,21 +59,55 @@ const Video = () => {
         comment:comment,
         used: 0
 
-    }
-    fetch("http://127.0.0.1:5555/Addplay", {
+    };
+
+    
+    const playerId = getPlayerIdFromJerseyNumber(player);
+
+    try {
+      // Make a POST request to the backend
+      const response = await fetch("http://127.0.0.1:5555/Addplay", {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(newPlay)
-    })
-    .then(response => response.json())
-    .then()
+      });
+  
+      if (response.ok) {
+        const responseBody = await response.json();
+        const newPlayId = responseBody.id;
+    
+        // Display the ID in an alert
+        alert(`New play created with ID: ${newPlayId}`);
+     
+        
+      } else {
+        // Backend validation failed
+        // Display error message to the user
+        alert('Error submitting the form. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      //alert('An unexpected error occurred. Please try again later.');
+    }
+    //Todo
+    
+  };
+//     fetch("http://127.0.0.1:5555/Addplay", {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(newPlay)
+//     })
+//     .then(response => response.json())
+//     .then()
         
 
        
     
-}
+// }
     
   
 
@@ -114,6 +159,8 @@ const Video = () => {
         <input type='text' name='quality'placeholder='Enter the quality rating'value={quality}onChange={(e) => setQuality(e.target.value)}/><p></p>
         <input type='text'name='assist'placeholder='Jersey # of assisting player' value={assist}onChange={(e) => setAssist(e.target.value)}/><p></p>
         <input type='text'name='comment'placeholder='comment optional'value={comment}onChange={(e) => setComment(e.target.value)}/><p></p>
+
+        
        
         <button type='submit'>Submit</button>
       </form>
