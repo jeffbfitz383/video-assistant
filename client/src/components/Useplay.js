@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import ReactPlayer from 'react-player';
 import UpdatePlay from './UpdatePlay';
 
+
+
 function Useplay() {
     const [plays, setPlays] = useState([]);
     const [players, setPlayers] = useState([]);
@@ -22,10 +24,17 @@ function Useplay() {
         
     }, []);
 
+    useEffect(() => {
+        // Fetch data from your Flask route
+        fetch('/Getplayer')  // Update the route to match your Flask route
+            .then(response => response.json())
+            .then(data => setPlayers(data.players))  // Assuming your data structure has a 'players' key
+            .catch(error => console.error('Error fetching data:', error));
+    }, []);
     
 
 
-
+    
 
 
     function handleUseStatus(event) {
@@ -100,7 +109,7 @@ function Useplay() {
 
     }                       
 
-
+    
 
 
 
@@ -180,16 +189,19 @@ function Useplay() {
         <input type='text'name='usage'placeholder='Enter id#'value={usage}onChange={(e) => setUsage(e.target.value)}/><p></p>
         <button type = 'submit'>submit</button>
       </form>
+      <h1>Players</h1>
       <ul className="box">
         {players.map((player, index) => (
         <li key={index}>
-            ID: {player.id}
-            {/* Name: {player.name},
-            Jersey: {player.jersey} */}
+            ID: {player.id},
+            Name: {player.name}, 
+            Jersey: {player.jersey}
+            Year: {player.year}
+            {/* Plays:{player.plays} */}
         </li>
   ))}
 </ul>
-
+{/* <button onClick={handleLogout}>Logout</button> */}
         </div>
     
     );

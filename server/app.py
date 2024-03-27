@@ -202,7 +202,7 @@ class GetPlayer(Resource):
 
 
         players_data = []
-        for play in all_plays:
+        for play in all_players:
             play_dict = {
                 'id': play.id,
                 'name':play.name,
@@ -212,10 +212,11 @@ class GetPlayer(Resource):
                 'plays':play.plays
       
             }
-            playerss_data.append(play_dict)
+            play_dict = play.to_dict()
+            players_data.append(play_dict)
 
      
-        return {'players': plays_data}, 200
+        return {'players': players_data}, 200
 
 
 api.add_resource(GetPlayer, '/Getplayer')
