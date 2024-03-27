@@ -58,7 +58,7 @@ class User(db.Model, SerializerMixin):
 class Project(db.Model, SerializerMixin):
     __tablename__= "projects"
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
+    name = db.Column(db.String)
 
     users = db.relationship("User", back_populates="projects")
     plays = db.relationship("Play", back_populates="projects")
@@ -78,7 +78,7 @@ class Play(db.Model, SerializerMixin):
     clock_stop = db.Column(db.String, nullable=False)
     start = db.Column(db.Integer, nullable=False)
     stop = db.Column(db.Integer, nullable=False)
-    player = db.Column(db.Integer, nullable=False)
+    jersey = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String, nullable=False)
     quality = db.Column(db.Float)
     assist = db.Column(db.Integer, nullable=False)
@@ -131,11 +131,11 @@ class Play(db.Model, SerializerMixin):
             raise ValueError(f"Invalid stop: {stop}. start must be an integer")
         return stop
 
-    @validates('player')
-    def validate_player(self, key, player):
-        if player not in ["0", "1", "2", "3", "4", "5", "10", "11", "12", "13", "14", "1", "20", "21", "22", "23", "24", "25", "30", "31", "32", "33", "34", "35"]:
-            raise ValueError(f"Invalid player: {player}. Jersey #s must be between 0 and 35 and not contain any digits higher than 5.")
-        return player
+    @validates('jersey')
+    def validate_jersey(self, key, jersey):
+        if jersey not in ["0", "1", "2", "3", "4", "5", "10", "11", "12", "13", "14", "1", "20", "21", "22", "23", "24", "25", "30", "31", "32", "33", "34", "35"]:
+            raise ValueError(f"Invalid player: {jersey}. Jersey #s must be between 0 and 35 and not contain any digits higher than 5.")
+        return jersey
 
 
     @validates('description')

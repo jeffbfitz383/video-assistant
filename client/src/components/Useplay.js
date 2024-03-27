@@ -5,6 +5,7 @@ import UpdatePlay from './UpdatePlay';
 
 function Useplay() {
     const [plays, setPlays] = useState([]);
+    const [players, setPlayers] = useState([]);
     const [selection, setSelection] = useState([]);
     const [usage, setUsage] = useState([]);
     const history = useHistory();
@@ -18,7 +19,14 @@ function Useplay() {
             .then(response => response.json())
             .then(data => setPlays(data.plays))
             .catch(error => console.error('Error fetching play data:', error));
+        
     }, []);
+
+    
+
+
+
+
 
     function handleUseStatus(event) {
         setPlayStatus(event.target.value);
@@ -55,6 +63,7 @@ function Useplay() {
         // The state `clipURL` won't be updated immediately here
         CU = newclipURL;
         alert(CU); 
+        // this.forceUpdate();
     }
 
     function handleUse(event){
@@ -140,7 +149,7 @@ function Useplay() {
                         Clock_Stop: {play.clock_stop}  ,
                         Start: {play.start}  ,
                         Stop: {play.stop}  ,
-                        Play: {play.player} ,
+                        Jersey: {play.jersey} ,
                         Description: {play.description} ,
                         Quality: {play.quality}  ,
                         Play:{play.assist} ,
@@ -171,8 +180,18 @@ function Useplay() {
         <input type='text'name='usage'placeholder='Enter id#'value={usage}onChange={(e) => setUsage(e.target.value)}/><p></p>
         <button type = 'submit'>submit</button>
       </form>
+      <ul className="box">
+        {players.map((player, index) => (
+        <li key={index}>
+            ID: {player.id}
+            {/* Name: {player.name},
+            Jersey: {player.jersey} */}
+        </li>
+  ))}
+</ul>
 
         </div>
+    
     );
 
     

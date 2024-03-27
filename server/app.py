@@ -123,14 +123,14 @@ class CreatePlay(Resource):
         play_clock_stop = form_json["clock_stop"]
         play_start = form_json["start"]
         play_stop = form_json["end"]
-        play_player = form_json["player"]
+        play_jersey = form_json["jersey"]
         play_description = form_json["description"]
         play_quality = form_json["quality"]
         play_assist = form_json["assist"]
         play_comment = form_json['comment']
         play_used = form_json['used']
 
-        player2 = Player.query.filter_by(jersey=play_player).first()
+        player = Player.query.filter_by(jersey=play_jersey).first()
         
 
   
@@ -142,20 +142,23 @@ class CreatePlay(Resource):
                 clock_stop = play_clock_stop,
                 start = play_start,
                 stop = play_stop,
-                player  =play_player,
+                jersey  =play_jersey,
                 description =play_description,
                 quality = play_quality,
                 assist=play_assist,
 
                 comment=play_comment,
                 used = play_used,
+                players=[player]
+                
                 
                 )
         
             db.session.add(new_play)
             db.session.commit()
 
-        play_id = new_play.id
+            play_id = new_play.id
+          
 
         a = hello(play_id, play_start, play_stop)
         print(a)
@@ -178,7 +181,7 @@ class GetPlay(Resource):
                 'clock_stop': play.clock_stop,
                 'start': play.start,
                 'stop': play.stop,
-                'player': play.player,
+                'jersey': play.jersey,
                 'description': play.description,
                 'quality': play.quality,
                 'assist': play.assist,
@@ -192,6 +195,30 @@ class GetPlay(Resource):
 
 
 api.add_resource(GetPlay, '/Useplay')
+
+class GetPlayer(Resource):
+    def get(self):
+        all_players = Player.query.all()  
+
+
+        players_data = []
+        for play in all_plays:
+            play_dict = {
+                'id': play.id,
+                'name':play.name,
+                'level':play.level,
+                'jersey':play.jersey,
+                'year':play.year,
+                'plays':play.plays
+      
+            }
+            playerss_data.append(play_dict)
+
+     
+        return {'players': plays_data}, 200
+
+
+api.add_resource(GetPlayer, '/Getplayer')
 
 class DeletePlay(Resource):
     def delete(self, id): 
