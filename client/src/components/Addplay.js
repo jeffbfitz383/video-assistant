@@ -15,6 +15,8 @@ const Video = () => {
   const [assist, setAssist] = useState('');
   const [comment, setComment] = useState(''); 
   const [used, setUsed] = useState('');
+  const [game, setGames] = useState('');
+
 
   const history = useHistory();
 
@@ -57,7 +59,8 @@ const Video = () => {
         quality: parseFloat(quality),
         assist: assist,
         comment:comment,
-        used: 0
+        used: 0,
+        game:game
 
     };
 
@@ -159,6 +162,7 @@ const Video = () => {
         <input type='text' name='quality'placeholder='Enter the quality rating'value={quality}onChange={(e) => setQuality(e.target.value)}/><p></p>
         <input type='text'name='assist'placeholder='Jersey # of assisting player' value={assist}onChange={(e) => setAssist(e.target.value)}/><p></p>
         <input type='text'name='comment'placeholder='comment optional'value={comment}onChange={(e) => setComment(e.target.value)}/><p></p>
+        <input type='text'name='game'placeholder='name of school'value={game}onChange={(e) => setGames(e.target.value)}/><p></p>
 
         
        

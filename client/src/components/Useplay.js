@@ -175,7 +175,13 @@ function Useplay() {
                         <ul>
                             <li>
                                 {play.players.map((player,index)=> (
-                                    <li key={index}>{player.id}</li>
+                                    <li key={index}>{player.name}</li>
+                                ))
+                                }
+                            </li>
+                            <li>
+                                {play.games.map((game,index)=> (
+                                    <li key={index}>{game.name}</li>
                                 ))
                                 }
                             </li>
