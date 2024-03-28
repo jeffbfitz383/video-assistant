@@ -246,13 +246,13 @@ class GetGame(Resource):
             
       
             }
-            play_dict = play.to_dict()
+            play_dict = game.to_dict()
             games_data.append(play_dict)
 
      
-        return {'players': players_data}, 200
+        return {'games': games_data}, 200
 
-api.add_resource(GetPlayer, '/Getplayer')
+api.add_resource(GetGame, '/Getgame')
 
 class DeletePlay(Resource):
     def delete(self, id): 

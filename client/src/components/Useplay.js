@@ -8,6 +8,7 @@ import UpdatePlay from './UpdatePlay';
 function Useplay() {
     const [plays, setPlays] = useState([]);
     const [players, setPlayers] = useState([]);
+    const [games, setGames] = useState([]);
     const [selection, setSelection] = useState([]);
     const [usage, setUsage] = useState([]);
     const history = useHistory();
@@ -32,6 +33,13 @@ function Useplay() {
             .catch(error => console.error('Error fetching data:', error));
     }, []);
     
+    useEffect(() => {
+        
+        fetch('/Getgame') 
+            .then(response => response.json())
+            .then(data => setGames(data.games))  
+            .catch(error => console.error('Error fetching data:', error));
+    }, []);
 
 
     
@@ -208,7 +216,19 @@ function Useplay() {
             {/* Plays:{player.plays} */}
         </li>
   ))}
-</ul>
+        </ul>
+        <h1>Games</h1>
+            <ul className="box">
+                {games.map((game, index) => (
+                <li key={index}>
+                    ID: {game.id},
+                    Name: {game.name}, 
+                    Jersey: {game.level}
+                    Year: {game.date}
+                    {/* Plays:{player.plays} */}
+                </li>
+        ))}
+        </ul>
 {/* <button onClick={handleLogout}>Logout</button> */}
         </div>
     
