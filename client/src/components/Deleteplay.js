@@ -16,7 +16,7 @@ function DeletePlay() {
 
      const navToUsePlay = () => {
     //    
-    alert('button works')
+    //alert('button works')
     history.push('/Useplay');
      };
 

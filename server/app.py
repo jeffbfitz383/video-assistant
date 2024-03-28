@@ -187,6 +187,7 @@ class GetPlay(Resource):
                 'assist': play.assist,
                 'comment': play.comment,
                 'used': play.used
+                # 'player': play.players.id
             }
             plays_data.append(play_dict)
 

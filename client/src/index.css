@@ -1,3 +1,5 @@
+
+
 :root {
   --bg: #282c34;
   --header: #fff;
@@ -69,4 +71,16 @@ body {
  
 .bk{
 
+}
+
+.Title{
+  color:#61dafb;
+  padding: 102px 0 70px;
+  text-align: center;
+  font-size: 128px;
+}
+
+.updateplays{
+
+  text-align: center
 }

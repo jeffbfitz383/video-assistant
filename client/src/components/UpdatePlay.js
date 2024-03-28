@@ -92,11 +92,13 @@ function UpdatePlay() {
 
     return (
         <div class>
+            <div class = "updateplays">
             <h1>Update Plays</h1>
-            <p>Welcome to our project management system!</p>
+            </div>
+           
             
             <button onClick = {playNumber}>Back to Use play</button>
-            <ul>
+            <ul class = "box">
                 {plays.map((play, index) => (
                     <li key={index}>
                         {/* <button onClick={playNumber}>use</button> */}
@@ -136,7 +138,7 @@ function UpdatePlay() {
             <p onClick={() => setValueAndQuarter(5)}>OT</p>
             </div>
             </div><p></p>
-            
+
             {/* <input type='text'name='quarter'placeholder='In what quarter did the play take place'value={quarter}onChange={(e) => setQuarter(e.target.value)}/><p></p> */}
             <input type='text'name='clock_start'placeholder='clock at the start of the play'value={clock_start}onChange={(e) => setClock_start(e.target.value)}/><p></p>
             <input type='text'name='clock_stop'placeholder='time of the stop of the play'value={clock_stop}onChange={(e) => setClock_stop(e.target.value)}/><p></p>

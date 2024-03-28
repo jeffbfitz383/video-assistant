@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link, useParams, useHistory} from "react-router-dom";
+// 
+
 
 function Home() {
 
@@ -18,7 +20,10 @@ function Home() {
         <div>
             <button onClick={handleNavtoSignup}>Signup</button>
             <button onClick={handleNavtoLoggin}>Loggin</button>
-            
+            <div class ="Title">
+                Highlight Video Maker
+            </div>
+
           
 
         </div>

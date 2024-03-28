@@ -16,7 +16,7 @@ function Useplay() {
     var CU = 'cu';
 
     useEffect(() => {
-        // Fetch play data (replace with your actual API call)
+       
         fetch('/Useplay')
             .then(response => response.json())
             .then(data => setPlays(data.plays))
@@ -25,10 +25,10 @@ function Useplay() {
     }, []);
 
     useEffect(() => {
-        // Fetch data from your Flask route
-        fetch('/Getplayer')  // Update the route to match your Flask route
+        
+        fetch('/Getplayer') 
             .then(response => response.json())
-            .then(data => setPlayers(data.players))  // Assuming your data structure has a 'players' key
+            .then(data => setPlayers(data.players))  
             .catch(error => console.error('Error fetching data:', error));
     }, []);
     
@@ -39,18 +39,18 @@ function Useplay() {
 
     function handleUseStatus(event) {
         setPlayStatus(event.target.value);
-        alert(playStatus)
+        // alert(playStatus)
       }
 
      const navToDelete = () => {
     //    
-    alert('button works')
+    //alert('button works')
     history.push('/deleteplay');
      };
 
     const navToPatch = () => {
     //    
-    alert('button works')
+    // alert('button works')
     history.push('/updateplay');
         };
 
@@ -60,24 +60,24 @@ function Useplay() {
     };
 
     function playNumber(id) {
-        alert(`Clicked on play with ID: ${id}`);
+        // alert(`Clicked on play with ID: ${id}`);
     }
 
     function switchClip(event) {
         event.preventDefault();
-        alert(`${selection}`); // prints 17 as expected
+        // alert(`${selection}`); // prints 17 as expected
         const newclipURL = `clip${selection}.mp4`;
-        alert(newclipURL); // prints clip17.mp4 as expected
+        // alert(newclipURL); // prints clip17.mp4 as expected
         setClipURL(newclipURL);
         // The state `clipURL` won't be updated immediately here
         CU = newclipURL;
-        alert(CU); 
+        // alert(CU); 
         // this.forceUpdate();
     }
 
     function handleUse(event){
         event.preventDefault();
-        alert("using play")
+        // alert("using play")
         const playID = usage;
         const conUrl = `/updateplay/${playID}`;
         const requestOptions = {
@@ -86,7 +86,7 @@ function Useplay() {
             body: JSON.stringify({ used: 1 }) // Set the used field to 1
         };
 
-        alert(playID)
+        // alert(playID)
 
         fetch(conUrl, requestOptions)
         .then(response => response.json())
@@ -115,8 +115,8 @@ function Useplay() {
 
     return (
         <div class = "bk">
-            <h1>Plays</h1>
-            <p>Welcome to our project management system!</p>
+           
+            
             <button onClick = {navToAddPlay}>Create Another Play</button><p></p>
             <button onClick = {navToDelete}>Go to Delete Play</button><p></p>
             <button onClick = {navToPatch}>Go to Update Play</button><p></p>
@@ -144,7 +144,7 @@ function Useplay() {
                 <label htmlFor="unused">Unused</label>
             </div>
         
-            
+            <h1>Plays</h1>
 
             <ul class = "box">
             {plays.filter(play => playStatus === 'used' ? play.used === 1 : play.used === 0)
@@ -163,7 +163,8 @@ function Useplay() {
                         Quality: {play.quality}  ,
                         Play:{play.assist} ,
                         Comment:{play.comment} ,
-                        Used:{play.used}
+                        Used:{play.used},
+                        {/* Play:{play.players.id} */}
                     </li>
                 ))}
             </ul>
