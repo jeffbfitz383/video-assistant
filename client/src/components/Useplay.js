@@ -147,7 +147,7 @@ function Useplay() {
             <h1>Plays</h1>
 
             <ul class = "box">
-            {plays.filter(play => playStatus === 'used' ? play.used === 1 : play.used === 0)
+            {plays?.filter(play => playStatus === 'used' ? play.used === 1 : play.used === 0)
             .map((play, index) => (
                     <li key={index}>
                         {/* <button onClick={playNumber}>use</button> */}
@@ -163,8 +163,15 @@ function Useplay() {
                         Quality: {play.quality}  ,
                         Play:{play.assist} ,
                         Comment:{play.comment} ,
-                        Used:{play.used},
-                        {/* Play:{play.players.id} */}
+                        Used:{play.used}
+                        <ul>
+                            <li>
+                                {play.players.map((player,index)=> (
+                                    <li key={index}>{player.id}</li>
+                                ))
+                                }
+                            </li>
+                        </ul>
                     </li>
                 ))}
             </ul>

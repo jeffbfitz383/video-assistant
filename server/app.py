@@ -6,7 +6,7 @@ from models import *
 from flask import request, jsonify, session, make_response
 from flask_restful import Resource
 from werkzeug.security import check_password_hash
-
+from sqlalchemy.orm import joinedload
 # Local imports
 # from config import app, db, api
 from config import *
@@ -168,31 +168,42 @@ api.add_resource(CreatePlay, '/Addplay')
         
 class GetPlay(Resource):
     def get(self):
-        all_plays = Play.query.all()  
-
-
+        all_plays = Play.query.all()
+        a = [a.to_dict(rules=('players',)) for a in all_plays]
         plays_data = []
-        for play in all_plays:
-            play_dict = {
-                'id': play.id,
-                'level': play.level,
-                'quarter': play.quarter,
-                'clock_start': play.clock_start,
-                'clock_stop': play.clock_stop,
-                'start': play.start,
-                'stop': play.stop,
-                'jersey': play.jersey,
-                'description': play.description,
-                'quality': play.quality,
-                'assist': play.assist,
-                'comment': play.comment,
-                'used': play.used
-                # 'player': play.players.id
-            }
-            plays_data.append(play_dict)
-
+        print(a)
+      
+        # for play in all_plays:
+        #     # print(play)
+        #     play_dict = {
+        #         'id': play.id,
+        #         'level': play.level,
+        #         'quarter': play.quarter,
+        #         'clock_start': play.clock_start,
+        #         'clock_stop': play.clock_stop,
+        #         'start': play.start,
+        #         'stop': play.stop,
+        #         'jersey': play.jersey,
+        #         'description': play.description,
+        #         'quality': play.quality,
+        #         'assist': play.assist,
+        #         'comment': play.comment,
+        #         'used': play.used
+        #         # 'player': play.players.id
+        #     }
+            
+        #     plays_data.append(play_dict)
+        
+       
+            # print(plays_data)
+        # for player in plays_data:
+        #     print(player["id"])
+        #     players = PlayPlayer.query.filter_by(player_id=player["id"]).all()
+        #     all_players.append(players)
+        # all_players.extend(play.players)
+        # print(all_players)
      
-        return {'plays': plays_data}, 200
+        return {'plays': a}, 200
 
 
 api.add_resource(GetPlay, '/Useplay')
@@ -219,6 +230,27 @@ class GetPlayer(Resource):
      
         return {'players': players_data}, 200
 
+
+class GetGame(Resource):
+    def get(self):
+        all_games = Game.query.all()  
+
+
+        games_data = []
+        for game in all_games:
+            play_dict = {
+                'id': game.id,
+                'name':game.name,
+                'level':game.level,
+                'date':game.date,
+            
+      
+            }
+            play_dict = play.to_dict()
+            games_data.append(play_dict)
+
+     
+        return {'players': players_data}, 200
 
 api.add_resource(GetPlayer, '/Getplayer')
 
