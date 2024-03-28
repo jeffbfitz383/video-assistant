@@ -129,8 +129,10 @@ class CreatePlay(Resource):
         play_assist = form_json["assist"]
         play_comment = form_json['comment']
         play_used = form_json['used']
+        play_game =form_json['game']
 
         player = Player.query.filter_by(jersey=play_jersey).first()
+        game = Game.query.filter_by(name=play_game).first()
         
 
   
@@ -149,7 +151,8 @@ class CreatePlay(Resource):
 
                 comment=play_comment,
                 used = play_used,
-                players=[player]
+                players=[player],
+                games=[game] if game else []
                 
                 
                 )
