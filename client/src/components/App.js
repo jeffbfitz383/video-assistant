@@ -34,7 +34,7 @@ function App() {
     showSignup ? <Signup /> : <Login onLogin={setUser}/>
 
   }
-  <button onClick={()=> setShowSignup(!showSignup)}>{showSignup ? "Login" : "Signup"}</button>
+  <button class="button-63" role="button" onClick={()=> setShowSignup(!showSignup)}>{showSignup ? "Login" : "Signup"}</button>
   </>
   )
 

@@ -38,7 +38,7 @@ function UpdatePlay() {
 
     function playNumber() {
         history.push('/useplay'); 
-        alert('button works')
+        // alert('button works')
     }
 
     function handleSubmit(event) {
@@ -97,7 +97,9 @@ function UpdatePlay() {
             </div>
            
             
-            <button onClick = {playNumber}>Back to Use play</button>
+            <button 
+            
+            class="button-63" role="button" onClick = {playNumber}>Back to Use play</button>
             <ul class = "box">
                 {plays.map((play, index) => (
                     <li key={index}>
@@ -119,10 +121,11 @@ function UpdatePlay() {
                     </li>
                 ))}
             </ul>
-            <form onSubmit={handleSubmit}>
+           
+            <form class = "box2" onSubmit={handleSubmit}>
 
 
-
+            
             <input type='text'name='id'placeholder='Enter id of play to be updated'value={id}onChange={(e) => setId(e.target.value)}/><p></p>
             <input type='text'name='level'placeholder='Enter Level of player'value={level}onChange={(e) => setLevel(e.target.value)}/><p></p>
 
@@ -150,9 +153,10 @@ function UpdatePlay() {
             <input type='text'name='assist'placeholder='assist'value={assist}onChange={(e) => setAssist(e.target.value)}/><p></p>
             <input type='text'name='comment'placeholder='comment'value={comment}onChange={(e) => setComment(e.target.value)}/><p></p>
             <input type='text'name='used'placeholder='used'value={used}onChange={(e) => setUsed(e.target.value)}/><p></p>
-            <button type='submit'>Submit</button>
+            <button button class="button-63" role="button" type='submit'>Submit</button>
             </form>
-        </div>
+            </div>
+       
     );
 }
 

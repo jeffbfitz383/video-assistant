@@ -10,6 +10,7 @@ function Useplay() {
     const [players, setPlayers] = useState([]);
     const [games, setGames] = useState([]);
     const [selection, setSelection] = useState([]);
+    const [playerSelection, setPlayerSelection] = useState([]);
     const [usage, setUsage] = useState([]);
     const history = useHistory();
     const [clipURL, setClipURL] = useState('');
@@ -43,7 +44,9 @@ function Useplay() {
 
 
     
-
+    function sortPlayer(event){
+        alert("button works")
+    }
 
     function handleUseStatus(event) {
         setPlayStatus(event.target.value);
@@ -125,9 +128,10 @@ function Useplay() {
         <div class = "bk">
            
             
-            <button onClick = {navToAddPlay}>Create Another Play</button><p></p>
-            <button onClick = {navToDelete}>Go to Delete Play</button><p></p>
-            <button onClick = {navToPatch}>Go to Update Play</button><p></p>
+            <button class="button-63" role="button" onClick = {navToAddPlay}>Create Another Play</button><p></p>
+          
+            <button class="button-63" role="button" onClick = {navToDelete}>Go to Delete Play</button><p></p>
+            <button class="button-63" role="button"onClick = {navToPatch}>Go to Update Play</button><p></p>
             
             
             <div>
@@ -155,7 +159,11 @@ function Useplay() {
             <h1>Plays</h1>
 
             <ul class = "box">
-            {plays?.filter(play => playStatus === 'used' ? play.used === 1 : play.used === 0)
+            {/* <h6>{play.jersey}</h6> */}
+            {plays?.filter(
+                play => playStatus === 'used' ? play.used === 1 : play.used === 0 ) 
+                // && play.jersey === playerSelection
+            
             .map((play, index) => (
                     <li key={index}>
                         {/* <button onClick={playNumber}>use</button> */}
@@ -172,6 +180,7 @@ function Useplay() {
                         Play:{play.assist} ,
                         Comment:{play.comment} ,
                         Used:{play.used}
+                      
                         <ul>
                             <li>
                                 {play.players.map((player,index)=> (
@@ -199,8 +208,8 @@ function Useplay() {
       <form onSubmit = {switchClip}>
         <h3>View a play</h3>
         <input type='text'name='selection'placeholder='Enter id#'value={selection}onChange={(e) => setSelection(e.target.value)}/><p></p>
-        <button type = 'submit'>submit</button>
-        <button type='submit' onClick={() => setSelection(0)}>see running project</button>
+        <button class="button-63" role="button"type = 'submit'>submit</button><p></p>
+        <button class="button-63" role="button"type='submit' onClick={() => setSelection(0)}>see running project</button>
         {/* this second button, when clicked should set {selection} to zero */}
       </form>
 
@@ -209,20 +218,13 @@ function Useplay() {
 
         </h3>
         <input type='text'name='usage'placeholder='Enter id#'value={usage}onChange={(e) => setUsage(e.target.value)}/><p></p>
-        <button type = 'submit'>submit</button>
+        <button class="button-63" role="button" type = 'submit'>submit</button>
       </form>
-      <h1>Players</h1>
-      <ul className="box">
-        {players.map((player, index) => (
-        <li key={index}>
-            ID: {player.id},
-            Name: {player.name}, 
-            Jersey: {player.jersey}
-            Year: {player.year}
-            {/* Plays:{player.plays} */}
-        </li>
-  ))}
-        </ul>
+
+
+
+
+
         <h1>Games</h1>
             <ul className="box">
                 {games.map((game, index) => (
@@ -236,6 +238,7 @@ function Useplay() {
         ))}
         </ul>
 {/* <button onClick={handleLogout}>Logout</button> */}
+{/* <button class='glowing-btn'><span class='glowing-txt'>C<span class='faulty-letter'>L</span>ICK</span></button> */}
         </div>
     
     );

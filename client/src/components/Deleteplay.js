@@ -42,8 +42,8 @@ function DeletePlay() {
         <div>
             <h1>Delete Plays</h1>
          
-            <button onClick = {navToUsePlay}>Go back to use play</button>
-            <ul>
+            <button class="button-63" role="button" onClick = {navToUsePlay}>Go back to use play</button>
+            <ul class="box">
                 {plays.map((play, index) => (
                     <li key={index}>
                       
@@ -67,7 +67,7 @@ function DeletePlay() {
             
            
             
-            <button onClick={handleSubmit}>Submit</button>
+            <button class="button-63" role="button"onClick={handleSubmit}>Submit</button>
             </form>
         </div>
     );

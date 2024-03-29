@@ -33,7 +33,7 @@ const Video = () => {
   }
 
   function getPlayerIdFromJerseyNumber(player){
-    alert(`The jersey# is ${player}`)
+    // alert(`The jersey# is ${player}`)
   }
 
 
@@ -112,11 +112,11 @@ const Video = () => {
     
 // }
     
-  
+
 
   return (
     <div className='player-wrapper'>
-      <p></p><button onClick = {navToUsePlay}>Use Play</button><p></p>
+      <p></p><button class="button-63" role="button"  onClick = {navToUsePlay}>Use Play</button><p></p>
       {/* Other components or elements */}
       <ReactPlayer
         className='react-player fixed-bottom'
@@ -125,8 +125,8 @@ const Video = () => {
         height='75%'
         controls={true}
       />
-      <form onSubmit={handleSubmit}>
-        <h3>This is a form</h3>
+      <form class = "box2" onSubmit={handleSubmit}>
+        <h3>Enter new play</h3>
 
         <div className="dropdown">
         <input type="text" name="level" placeholder="Enter Level of player" value={level} onChange={(e) => setValueAndLevel(e.target.value)} className="dropbtn"/>
@@ -166,7 +166,7 @@ const Video = () => {
 
         
        
-        <button type='submit'>Submit</button>
+        <button class="button-63" role="button" type='submit'>Submit</button>
       </form>
     </div>
   );

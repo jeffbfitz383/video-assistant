@@ -18,8 +18,8 @@ function Home() {
 
     return (
         <div>
-            <button onClick={handleNavtoSignup}>Signup</button>
-            <button onClick={handleNavtoLoggin}>Loggin</button>
+            <button  class="button-63" role="button" onClick={handleNavtoSignup}>Signup</button><p></p>
+            <button class="button-63" role="button" onClick={handleNavtoLoggin}>Loggin</button>
             <div class ="Title">
                 Highlight Video Maker
             </div>
@@ -31,3 +31,4 @@ function Home() {
 };
 
 export default Home;
+

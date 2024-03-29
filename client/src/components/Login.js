@@ -37,9 +37,9 @@ function Login({onLogin}) {
             <form onSubmit={handleSubmit}>
                 <input type="text" name="name" placeholder="User name" value={name} onChange={(e) => setName(e.target.value)} /><p></p>
                 <input type="password" name="password" placeholder="User password" value={password} onChange={(e) => setPassword(e.target.value)} /><p></p>
-                <button type="submit">Submit</button>
+                <button class="button-63" role="button" type="submit">Submit</button><p></p>
             </form>
-            <button onClick={handleNavToHome}>Go Back</button>
+            <button class="button-63" role="button" onClick={handleNavToHome}>Go Back</button>
         </div>
     );
 };

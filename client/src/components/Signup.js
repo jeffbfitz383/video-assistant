@@ -44,9 +44,9 @@ function Signup() {
             <input type="text" name="password" placeholder="User password" value={password} onChange={(e) => setPassword(e.target.value)}/><p></p>
            
             
-            <button onClick={handleSubmit}>Submit</button>
+            <button class="button-63" role="button"onClick={handleSubmit}>Submit</button>
             </form><p></p>
-            <button onClick={handleNavtoHome}>Home</button>
+            <button class="button-63" role="button"onClick={handleNavtoHome}>Home</button>
           
 
         </div>
