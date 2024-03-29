@@ -147,7 +147,7 @@ const Video = () => {
           <p onClick={() => setValueAndQuarter(4)}>4th</p>
           <p onClick={() => setValueAndQuarter(5)}>OT</p>
         </div>
-      </div><p></p>
+      </div><h6>To enter Quarter make sure field is clicked on before hovering over drop down</h6><p></p>
 
 
 
