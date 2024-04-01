@@ -1,5 +1,8 @@
 Highlist Video Assistant.
 
+specific note to grader- two debuggings have taken place this weekend.  If you are obligated grade bassed on project prior to submission please refer to march 29th github submission.
+Use play function only works when the instructions below are speifically followed(A play must be viewed before it is used).  
+
 The purpose of this app is to serve as a video editor.
 
 Starting the app.  Once forked and cloned cd into the app and then cd into the server. 

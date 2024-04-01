@@ -28,15 +28,15 @@ function App() {
     });
   }, []);
 
-  if (!user) return (
-  <>
-  {
-    showSignup ? <Signup /> : <Login onLogin={setUser}/>
+  // if (!user) return (
+  // <>
+  // {
+  //   // showSignup ? <Signup /> : <Login onLogin={setUser}/>
 
-  }
-  <button class="button-63" role="button" onClick={()=> setShowSignup(!showSignup)}>{showSignup ? "Login" : "Signup"}</button>
-  </>
-  )
+  // }
+  // {/* <button class="button-63" role="button" onClick={()=> setShowSignup(!showSignup)}>{showSignup ? "Login" : "Signup"}</button> */}
+  // </>
+  // )
 
     return(
       
