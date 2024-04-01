@@ -102,7 +102,7 @@ class Play(db.Model, SerializerMixin):
 
     @validates('quarter')
     def validate_quarter(self, key, quarter):
-        if quarter not in [1, 2, 3, 4, 5]:
+        if quarter not in ['1', '2', '3', '4', '5']:
             raise ValueError(f"Invalid quarter: {quarter}. Quarter must be '1', '2', '3', '4' or '5'.")
         return quarter
 

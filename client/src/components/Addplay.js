@@ -138,7 +138,7 @@ const Video = () => {
         </div>
       </div><p></p>
 
-      <div className="dropdown">
+      {/* <div className="dropdown">
         <input type="text" name="quarter" placeholder="Enter quarter play took place in" value={quarter} onChange={(e) => setValueAndQuarter(e.target.value)} className="dropbtn"/>
         <div className="dropdown-content">
           <p onClick={() => setValueAndQuarter(1)}>1st</p>
@@ -147,12 +147,12 @@ const Video = () => {
           <p onClick={() => setValueAndQuarter(4)}>4th</p>
           <p onClick={() => setValueAndQuarter(5)}>OT</p>
         </div>
-      </div><h6>To enter Quarter make sure field is clicked on before hovering over drop down</h6><p></p>
+      </div><h6>To enter Quarter make sure field is clicked on before hovering over drop down</h6><p></p> */}
 
 
 
         
-        {/* <input type='text'name='quarter'placeholder='In what quarter did the play take place'value={quarter}onChange={(e) => setQuarter(e.target.value)}/><p></p> */}
+        <input type='text'name='quarter'placeholder='In what quarter did the play take place'value={quarter}onChange={(e) => setQuarter(e.target.value)}/><p></p>
         <input type='text'name='clock_start'placeholder='clock at the start of the play'value={clock_start}onChange={(e) => setClock_start(e.target.value)}/><p></p>
         <input type='text'name='clock_stop'placeholder='time of the stop of the play'value={clock_stop}onChange={(e) => setClock_stop(e.target.value)}/><p></p>
         <input type='text'name='start'placeholder='video start time'value={start}onChange={(e) => setStart(e.target.value)}/><p></p>
